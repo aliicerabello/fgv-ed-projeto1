@@ -1,5 +1,4 @@
 #include "ReservationRequest.hpp"
-#include <iostream>
 using namespace std;
 
 // Constructor
@@ -41,3 +40,5 @@ string ReservationRequest::getWeekday(){
 int ReservationRequest::getStudentCount(){
     return student_count;
 }
+
+

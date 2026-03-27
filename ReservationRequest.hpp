@@ -1,3 +1,7 @@
+#ifndef RESERVATION_REQUEST_HPP
+#define RESERVATION_REQUEST_HPP
+#include <string>
+
 class ReservationRequest {
 
 private:
@@ -18,3 +22,5 @@ public:
     std::string getWeekday();
     int getStudentCount();
 };
+
+#endif
