@@ -88,18 +88,15 @@ bool ReservationSystem::cancel(std::string course_name){
     for(int i = 0; i < room_count; i++){
         
         Reservation *atual = rooms[i].head; 
+        bool reserva_cancelada = true;
 
         while(atual != nullptr) {
-            Reservation *anterior = nullptr;
+            Reservation *anterior;
             
             if(atual->course_name == course_name){
-                if(anterior == nullptr){
-                    rooms[i].head = atual->next; //first node
-                }
-                else
-                    anterior->next = atual->next;
-                delete atual;
-                return true;
+                anterior->next = atual->next;
+                atual->next = nullptr;
+                return reserva_cancelada;
             }
             anterior = atual;
             atual = atual->next;
@@ -107,5 +104,3 @@ bool ReservationSystem::cancel(std::string course_name){
     }
     return false;
 }
-
-

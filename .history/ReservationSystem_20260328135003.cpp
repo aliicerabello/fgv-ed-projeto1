@@ -1,5 +1,4 @@
 #include "ReservationSystem.hpp"
-#include <iostream>
 using namespace std;
 
 // Constructor: ReservationSystem possui int room_count, int *room_capacities e Room rooms
@@ -54,58 +53,34 @@ bool ReservationSystem::reserve(ReservationRequest request){
         if (rooms[i].room_capacity < student_count)
             continue; 
     
-        //agora verificamos conflito de horario
-        Reservation *atual = rooms[i].head;
-        bool sala_disponivel = true;
+    //agora verificamos conflito de horario
+    Reservation *atual = rooms[i].head;
+    bool sala_disponivel = true;
 
-        while (atual != nullptr){
-            if (weekday == atual->weekday){  // so verifica conflito se for o mesmo dia
-                bool sem_conflito = (end_hour <= atual->start_hour) || (start_hour >= atual->end_hour);
-                if (!sem_conflito){          // se tem conflito
-                    sala_disponivel = false;
-                    break;                 
-                }
+    while (atual != nullptr){
+        if (weekday == atual->weekday){  // so verifica conflito se for o mesmo dia
+            bool sem_conflito = (end_hour <= atual->start_hour) || (start_hour >= atual->end_hour);
+            if (!sem_conflito){          // se tem conflito
+                sala_disponivel = false;
+                break;                 
             }
-            atual = atual->next;
         }
-
-        if (sala_disponivel) {
-            Reservation *nova = new Reservation();
-            nova->course_name = course_name;
-            nova->end_hour = end_hour;
-            nova->start_hour = start_hour;
-            nova->student_count = student_count;
-            nova->weekday = weekday;
-            nova->next = rooms[i].head; //aponta pro primeiro elemento das reservas de rooom
-            rooms[i].head = nova; // se torna no 1o elemento de room
-            return true;
-        }
+        atual = atual->next;
     }
-    return false;
-}
 
-bool ReservationSystem::cancel(std::string course_name){
-    for(int i = 0; i < room_count; i++){
-        
-        Reservation *atual = rooms[i].head; 
+    if (sala_disponivel) {
+        Reservation *nova = new Reservation();
+        nova->course_name = course_name;
+        nova->end_hour = end_hour;
+        nova->start_hour = start_hour;
+        nova->student_count = student_count;
+        nova->weekday = weekday;
+        nova->next = rooms[i].head; //aponta pro primeiro elemento das reservas de rooom
+        rooms[i].head = nova; // se torna no 1o elemento de room
 
-        while(atual != nullptr) {
-            Reservation *anterior = nullptr;
-            
-            if(atual->course_name == course_name){
-                if(anterior == nullptr){
-                    rooms[i].head = atual->next; //first node
-                }
-                else
-                    anterior->next = atual->next;
-                delete atual;
-                return true;
-            }
-            anterior = atual;
-            atual = atual->next;
-        }
+        return true;
     }
+
     return false;
+    }
 }
-
-

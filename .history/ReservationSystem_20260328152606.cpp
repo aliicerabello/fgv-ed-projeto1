@@ -83,29 +83,3 @@ bool ReservationSystem::reserve(ReservationRequest request){
     }
     return false;
 }
-
-bool ReservationSystem::cancel(std::string course_name){
-    for(int i = 0; i < room_count; i++){
-        
-        Reservation *atual = rooms[i].head; 
-
-        while(atual != nullptr) {
-            Reservation *anterior = nullptr;
-            
-            if(atual->course_name == course_name){
-                if(anterior == nullptr){
-                    rooms[i].head = atual->next; //first node
-                }
-                else
-                    anterior->next = atual->next;
-                delete atual;
-                return true;
-            }
-            anterior = atual;
-            atual = atual->next;
-        }
-    }
-    return false;
-}
-
-

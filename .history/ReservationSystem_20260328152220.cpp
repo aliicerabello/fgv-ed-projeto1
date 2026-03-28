@@ -67,6 +67,7 @@ bool ReservationSystem::reserve(ReservationRequest request){
                 }
             }
             atual = atual->next;
+            cout << 7;
         }
 
         if (sala_disponivel) {
@@ -78,34 +79,10 @@ bool ReservationSystem::reserve(ReservationRequest request){
             nova->weekday = weekday;
             nova->next = rooms[i].head; //aponta pro primeiro elemento das reservas de rooom
             rooms[i].head = nova; // se torna no 1o elemento de room
+            cout << 8;
             return true;
         }
+
     }
     return false;
 }
-
-bool ReservationSystem::cancel(std::string course_name){
-    for(int i = 0; i < room_count; i++){
-        
-        Reservation *atual = rooms[i].head; 
-
-        while(atual != nullptr) {
-            Reservation *anterior = nullptr;
-            
-            if(atual->course_name == course_name){
-                if(anterior == nullptr){
-                    rooms[i].head = atual->next; //first node
-                }
-                else
-                    anterior->next = atual->next;
-                delete atual;
-                return true;
-            }
-            anterior = atual;
-            atual = atual->next;
-        }
-    }
-    return false;
-}
-
-

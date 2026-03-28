@@ -2,7 +2,7 @@
 #define RESERVATION_SYSTEM_HPP
 #include "ReservationRequest.hpp"
 
-struct Reservation{ // registro de uma ReservationRequest que deu crt
+struct Reservation { // registro de uma ReservationRequest que deu crt
                      // na pratica => pegar os dados da reservatiocorrigin request e copiar pra reserva quando reserve() for chamado
         
         int start_hour;
@@ -12,6 +12,7 @@ struct Reservation{ // registro de uma ReservationRequest que deu crt
         int student_count;
         Reservation *next;  //o tipo da coisa que o next aponta é outra reserva
 };
+
 
 struct Room {
     Reservation *head; // começo da lista de reservas 
