@@ -66,8 +66,8 @@ int main(){
     ReservationRequest r15("Matematica Discreta", "terca", 9, 11, 50);
     cout << "Matematica Discreta (ter 9-11, 50):   " << sistema.reserve(r15) << " (esperado: 1)" << endl;
 
-    //cout << "\n=== GRADE FINAL ===" << endl;
-    //sistema.printSchedule();
+    cout << "\n=== GRADE FINAL ===" << endl;
+    sistema.printSchedule();
 
     return 0;
 }
