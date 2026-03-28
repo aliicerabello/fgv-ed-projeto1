@@ -16,7 +16,7 @@ struct Reservation { // registro de uma ReservationRequest que deu crt
 
 struct Room {
 
-        Reservation* head; // entrada da lista de reservas
+        Reservation* head; // começo da lista de reservas
         int room_capacity;
 
 };       
@@ -47,3 +47,4 @@ public:
 };
 
 
+#endif
