@@ -1,4 +1,4 @@
-# 🏫 Reservation System
+# Reservation System
 
 ![C++](https://img.shields.io/badge/language-C++-blue)
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
@@ -8,7 +8,7 @@ Sistema de gerenciamento de reservas de salas desenvolvido em C++.
 
 ---
 
-## 📌 Descrição
+## Descrição
 
 O sistema permite realizar reservas e cancelamentos de salas com base em:
 
@@ -20,7 +20,7 @@ O projeto foi desenvolvido com foco em eficiência nas operações mais frequent
 
 ---
 
-## 📦 Organização Interna dos Dados
+## Organização Interna dos Dados
 
 Os dados são organizados por meio de um vetor de salas (`Room`), onde cada sala possui uma lista encadeada de reservas (`Reservation`).
 
@@ -45,7 +45,7 @@ ReservationSystem
 
 ---
 
-## ⚙️ Funcionamento
+## Funcionamento
 
 - A capacidade da sala é verificada diretamente no campo `room_capacity`, evitando iterações desnecessárias.
 - Caso a capacidade seja suficiente, verifica-se a disponibilidade de horário.
@@ -54,7 +54,7 @@ ReservationSystem
 
 ---
 
-## 📈 Complexidade
+## Complexidade
 
 | Operação           | Complexidade |
 |------------------|------------|
@@ -69,44 +69,7 @@ Onde:
 
 ---
 
-## 🔄 Alternativas Consideradas
-
-- **Array fixo por sala**
-  - Mais simples
-  - ❌ exige limite máximo de reservas
-
-- **Lista duplamente encadeada**
-  - Facilita remoção
-  - ❌ maior uso de memória
-
-- **Inserção ordenada**
-  - Mantém lista organizada
-  - ❌ aumenta custo de `reserve()`
-
----
-
-## ⚖️ Trade-offs
-
-- Lista encadeada simples:
-  - ✔️ inserção rápida  
-  - ❌ não mantém ordem  
-
-- Ordenação no `printSchedule()`:
-  - ✔️ eficiente no uso geral  
-  - ❌ custo alto na impressão  
-
-- `ReservationRequest` por valor:
-  - ❌ cópias desnecessárias  
-  - ✔️ poderia ser `const &`  
-
-- Busca por nome da disciplina:
-  - ✔️ simples  
-  - ❌ custo O(m × n)  
-  - 💡 possível melhoria: tabela hash (`O(1)`)
-
----
-
-## 🛠️ Compilação
+## Compilação
 
 ```bash
 g++ -Wall -Wextra -Werror -Wshadow -Wpedantic -Wconversion -std=c++17 main.cpp ReservationSystem.cpp ReservationRequest.cpp -o sistema
