@@ -26,16 +26,16 @@ Os dados são organizados por meio de um vetor de salas (`Room`), onde cada sala
 
 ### Estrutura geral:
 ReservationSystem
-│
-├── Room[0]
-│  ├── room_capacity
-│  └── Reservation → Reservation → ...
-│
-├── Room[1]
-│  ├── room_capacity
-│  └── Reservation → ...
-│
-└── ...
+|
+|-- Room[0]
+| |-- room_capacity
+| |-- Reservation -> Reservation -> ...
+|
+|-- Room[1]
+| |-- room_capacity
+| |-- Reservation -> ...
+|
+|-- ...
 
 - Cada `Room` representa uma sala
 - Cada `Reservation` representa uma reserva
