@@ -1,5 +1,5 @@
-#include "ReservationRequest.cpp"
-#include "ReservationSystem.cpp"
+#include "ReservationRequest.hpp"
+#include "ReservationSystem.hpp"
 #include <iostream>
 using namespace std;
 
