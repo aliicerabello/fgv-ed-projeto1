@@ -16,49 +16,54 @@ O sistema permite realizar reservas e cancelamentos de salas com base em:
 - disponibilidade de horário
 - nome da disciplina
 
-As reservas são organizadas internamente por sala, utilizando estruturas de dados eficientes para operações frequentes.
+O projeto foi desenvolvido com foco em eficiência nas operações mais frequentes e sem uso da STL, conforme restrição proposta.
 
 ---
 
-## 🧠 Estrutura de Dados
+## 📦 Organização Interna dos Dados
 
-A principal estrutura utilizada é a **lista encadeada**.
+Os dados são organizados por meio de um vetor de salas (`Room`), onde cada sala possui uma lista encadeada de reservas (`Reservation`).
 
-- Cada `Room` possui:
-  - capacidade (`room_capacity`)
-  - ponteiro para o início de uma lista de reservas
+### Estrutura geral:
+ReservationSystem
+│
+├── Room[0]
+│ ├── room_capacity
+│ └── Reservation → Reservation → ...
+│
+├── Room[1]
+│ ├── room_capacity
+│ └── Reservation → ...
+│
+└── ...
 
-- Cada `Reservation`:
-  - representa uma reserva
-  - aponta para a próxima (`next`)
-
-👉 Assim, cada sala mantém sua própria lista de reservas.
+- Cada `Room` representa uma sala
+- Cada `Reservation` representa uma reserva
+- As reservas são armazenadas em listas encadeadas por sala
 
 ---
 
 ## ⚙️ Funcionamento
 
 - A capacidade da sala é verificada diretamente no campo `room_capacity`, evitando iterações desnecessárias.
-- Se a capacidade for suficiente, verifica-se a disponibilidade de horário.
-- A inserção de reservas é feita no **início da lista** → custo `O(1)`.
-- O cancelamento percorre as listas até encontrar a reserva correspondente.
+- Caso a capacidade seja suficiente, verifica-se a disponibilidade de horário.
+- A inserção é feita no início da lista → custo `O(1)`
+- O cancelamento percorre a lista até encontrar a reserva
 
 ---
 
 ## 📈 Complexidade
 
-| Operação          | Complexidade |
-|-------------------|--------------|
-| `reserve()`       | O(m × n)     |
-| `cancel()`        | O(m × n)     |
-| inserção          | O(1)         |
-| `printSchedule()` | O(n²)        |
+| Operação           | Complexidade |
+|------------------|------------|
+| `reserve()`       | O(m × n)   |
+| `cancel()`        | O(m × n)   |
+| inserção          | O(1)       |
+| `printSchedule()` | O(n²)      |
 
 Onde:
 - `m` = número de salas  
 - `n` = número de reservas por sala  
-
-A ordenação é feita apenas no `printSchedule()` usando **Bubble Sort**.
 
 ---
 
@@ -95,11 +100,11 @@ A ordenação é feita apenas no `printSchedule()` usando **Bubble Sort**.
 - Busca por nome da disciplina:
   - ✔️ simples  
   - ❌ custo O(m × n)  
-  - 💡 possível melhoria: uso de tabela hash (`O(1)`)
+  - 💡 possível melhoria: tabela hash (`O(1)`)
 
 ---
 
 ## 🛠️ Compilação
 
 ```bash
-g++ -Wall -Wextra -Werror -std=c++17 main.cpp ReservationSystem.cpp ReservationRequest.cpp -o sistema
+g++ -Wall -Wextra -Werror -Wshadow -Wpedantic -Wconversion -std=c++17 main.cpp ReservationSystem.cpp ReservationRequest.cpp -o sistema
