@@ -1,26 +1,24 @@
 #include "ReservationRequest.hpp"
 using namespace std;
 
-// Constructor
-ReservationRequest::ReservationRequest(std::string course_name, 
-                                       std::string weekday, 
-                                       int start_hour, 
-                                       int end_hour, 
-                                       int student_count){
-
-        this->course_name = course_name;
-        this->weekday = weekday;
-        this->start_hour = start_hour;
-        this->end_hour = end_hour;
-        this->student_count = student_count;
-    }
-
-// Destructor
-ReservationRequest::~ReservationRequest(){
-
+// constructor
+ReservationRequest::ReservationRequest(std::string course_name_, 
+                                       std::string weekday_, 
+                                       int start_hour_, 
+                                       int end_hour_, 
+                                       int student_count_) {                              
+        this->course_name = course_name_;
+        this->weekday = weekday_;
+        this->start_hour = start_hour_;
+        this->end_hour = end_hour_;
+        this->student_count = student_count_;
 }
 
-// Getters
+// destructor
+ReservationRequest::~ReservationRequest(){
+}
+
+// getters
 int ReservationRequest::getStartHour(){
     return start_hour;
 }

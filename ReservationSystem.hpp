@@ -2,22 +2,19 @@
 #define RESERVATION_SYSTEM_HPP
 #include "ReservationRequest.hpp"
 
-struct Reservation{ // registro de uma ReservationRequest que deu crt
-                     // na pratica => pegar os dados da reservatiocorrigin request e copiar pra reserva quando reserve() for chamado
-        
+struct Reservation{
         int start_hour;
         int end_hour;
         std::string weekday;
         std::string course_name;
         int student_count;
-        Reservation *next;  //o tipo da coisa que o next aponta é outra reserva
+        Reservation *next;
 };
 
 struct Room {
-    Reservation *head; // começo da lista de reservas 
+    Reservation *head;
     int room_capacity;
 };       
-
 
 class ReservationSystem {
 
@@ -25,11 +22,8 @@ private:
     int room_count;
     int *room_capacities;
     Room *rooms;
-    // Estruturas internas escolhidas pelos alunos
-    // para armazenar e gerenciar as reservas, os horários, ...
 
 public:
-
     ReservationSystem(int room_count, int* room_capacities);
     ~ReservationSystem();
 
@@ -37,10 +31,6 @@ public:
     bool cancel(std::string course_name);
 
     void printSchedule();
-
-    // Outros métodos utilitários necessários
-    // para auxiliar nas funções requisitadas
 };
-
 
 #endif
