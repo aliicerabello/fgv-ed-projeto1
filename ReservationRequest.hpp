@@ -12,8 +12,8 @@ private:
     int student_count;
 
 public:
-
-    ReservationRequest(std::string course_name, std::string weekday, int start_hour, int end_hour, int student_count);
+    ReservationRequest(std::string course_name, std::string weekday, 
+                        int start_hour, int end_hour, int student_count);
     ~ReservationRequest();
 
     int getStartHour();
