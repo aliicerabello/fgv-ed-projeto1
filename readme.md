@@ -25,7 +25,7 @@ O projeto foi desenvolvido com foco em eficiência nas operações mais frequent
 Os dados são organizados por meio de um vetor de salas (`Room`), onde cada sala possui uma lista encadeada de reservas (`Reservation`).
 
 ### Estrutura geral:
-ReservationSystem
+``ReservationSystem
 │
 ├── Room[0]
 │ ├── room_capacity
@@ -35,7 +35,7 @@ ReservationSystem
 │ ├── room_capacity
 │ └── Reservation → ...
 │
-└── ...
+└── ...``
 
 - Cada `Room` representa uma sala
 - Cada `Reservation` representa uma reserva
